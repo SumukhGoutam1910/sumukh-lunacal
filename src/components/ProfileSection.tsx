@@ -3,6 +3,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight, Plus, HelpCircle } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { Separator } from "@/components/ui/separator";
 import gallery1 from "@/assets/gallery-1.jpg";
 import gallery2 from "@/assets/gallery-2.jpg";
 import gallery3 from "@/assets/gallery-3.jpg";
@@ -22,7 +23,7 @@ const ProfileSection = () => {
 
   return (
     <div className="min-h-screen bg-background p-8 flex items-center justify-center">
-      <div className="w-full max-w-2xl space-y-6">
+      <div className="w-full max-w-2xl space-y-6 bg-gradient-to-b from-[hsl(0,0%,18%)] to-[hsl(0,0%,16%)] p-8 rounded-3xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.6)]">
         {/* Help Icon */}
         <div className="flex justify-start">
           <Button variant="ghost" size="icon" className="rounded-full">
@@ -32,14 +33,14 @@ const ProfileSection = () => {
 
         {/* Tabs Section */}
         <Tabs defaultValue="about" className="w-full">
-          <TabsList className="w-full justify-start">
+          <TabsList className="w-full">
             <TabsTrigger value="about">About Me</TabsTrigger>
             <TabsTrigger value="experiences">Experiences</TabsTrigger>
             <TabsTrigger value="recommended">Recommended</TabsTrigger>
           </TabsList>
 
-          <TabsContent value="about" className="mt-6">
-            <div className="bg-card rounded-2xl p-6">
+          <TabsContent value="about" className="mt-6 animate-in fade-in-50 slide-in-from-bottom-2 duration-300">
+            <div className="bg-gradient-to-b from-[hsl(0,0%,20%)] to-[hsl(0,0%,18%)] rounded-3xl p-6 shadow-[0_4px_12px_-2px_rgba(0,0,0,0.3)]">
               <ScrollArea className="h-48 pr-4">
                 <div className="space-y-4 text-foreground">
                   <p className="leading-relaxed">
@@ -53,8 +54,8 @@ const ProfileSection = () => {
             </div>
           </TabsContent>
 
-          <TabsContent value="experiences" className="mt-6">
-            <div className="bg-card rounded-2xl p-6">
+          <TabsContent value="experiences" className="mt-6 animate-in fade-in-50 slide-in-from-bottom-2 duration-300">
+            <div className="bg-gradient-to-b from-[hsl(0,0%,20%)] to-[hsl(0,0%,18%)] rounded-3xl p-6 shadow-[0_4px_12px_-2px_rgba(0,0,0,0.3)]">
               <ScrollArea className="h-48 pr-4">
                 <div className="space-y-4 text-foreground">
                   <p className="leading-relaxed">
@@ -65,8 +66,8 @@ const ProfileSection = () => {
             </div>
           </TabsContent>
 
-          <TabsContent value="recommended" className="mt-6">
-            <div className="bg-card rounded-2xl p-6">
+          <TabsContent value="recommended" className="mt-6 animate-in fade-in-50 slide-in-from-bottom-2 duration-300">
+            <div className="bg-gradient-to-b from-[hsl(0,0%,20%)] to-[hsl(0,0%,18%)] rounded-3xl p-6 shadow-[0_4px_12px_-2px_rgba(0,0,0,0.3)]">
               <ScrollArea className="h-48 pr-4">
                 <div className="space-y-4 text-foreground">
                   <p className="leading-relaxed">
@@ -79,17 +80,17 @@ const ProfileSection = () => {
         </Tabs>
 
         {/* Divider */}
-        <div className="h-px bg-border/30" />
+        <Separator className="bg-border/40" />
 
         {/* Gallery Section */}
         <div className="space-y-6">
           <div className="flex items-center justify-between">
-            <Button variant="dark" className="px-8 py-2">
+            <Button variant="dark" className="px-8 py-3 text-base font-semibold">
               Gallery
             </Button>
             
             <div className="flex items-center gap-4">
-              <Button variant="dark-outline" className="gap-2">
+              <Button variant="dark-outline" className="gap-2 px-6 py-3 text-sm font-semibold">
                 <Plus className="h-4 w-4" />
                 ADD IMAGE
               </Button>
@@ -98,7 +99,7 @@ const ProfileSection = () => {
                 <Button 
                   variant="ghost" 
                   size="icon" 
-                  className="rounded-full bg-secondary hover:bg-accent"
+                  className="rounded-full bg-accent/60 hover:bg-accent shadow-[0_6px_12px_-3px_rgba(0,0,0,0.4)] hover:shadow-[0_8px_16px_-4px_rgba(0,0,0,0.5)] transition-all hover:translate-y-[-2px]"
                   onClick={handlePrevImage}
                 >
                   <ChevronLeft className="h-5 w-5" />
@@ -106,7 +107,7 @@ const ProfileSection = () => {
                 <Button 
                   variant="ghost" 
                   size="icon" 
-                  className="rounded-full bg-secondary hover:bg-accent"
+                  className="rounded-full bg-accent/60 hover:bg-accent shadow-[0_6px_12px_-3px_rgba(0,0,0,0.4)] hover:shadow-[0_8px_16px_-4px_rgba(0,0,0,0.5)] transition-all hover:translate-y-[-2px]"
                   onClick={handleNextImage}
                 >
                   <ChevronRight className="h-5 w-5" />
@@ -120,7 +121,7 @@ const ProfileSection = () => {
             {galleryImages.map((image, index) => (
               <div 
                 key={index}
-                className="aspect-square rounded-2xl overflow-hidden bg-accent transition-transform hover:scale-105 cursor-pointer"
+                className="aspect-square rounded-3xl overflow-hidden bg-accent transition-all duration-300 hover:scale-105 hover:shadow-[0_12px_24px_-6px_rgba(0,0,0,0.6)] cursor-pointer shadow-[0_8px_16px_-4px_rgba(0,0,0,0.4)]"
               >
                 <img 
                   src={image} 
