@@ -24,20 +24,24 @@ const ProfileSection = () => {
   return (
     <div className="min-h-screen bg-background p-8 flex items-center justify-center">
       <div className="w-full max-w-2xl space-y-6 bg-gradient-to-b from-[hsl(0,0%,18%)] to-[hsl(0,0%,16%)] p-8 rounded-3xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.6)]">
-        {/* Help Icon */}
-        <div className="flex justify-start">
-          <Button variant="ghost" size="icon" className="rounded-full">
-            <HelpCircle className="h-5 w-5 text-muted-foreground" />
-          </Button>
-        </div>
-
-        {/* Tabs Section */}
+        {/* Tabs Section with Help Icon */}
         <Tabs defaultValue="about" className="w-full">
-          <TabsList className="w-full">
-            <TabsTrigger value="about">About Me</TabsTrigger>
-            <TabsTrigger value="experiences">Experiences</TabsTrigger>
-            <TabsTrigger value="recommended">Recommended</TabsTrigger>
-          </TabsList>
+          <div className="relative">
+            {/* Help Icon - positioned inside */}
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              className="absolute left-2 top-2 z-20 rounded-full bg-gradient-to-br from-[hsl(0,0%,28%)] to-[hsl(0,0%,22%)] hover:from-[hsl(0,0%,32%)] hover:to-[hsl(0,0%,26%)] shadow-[0_4px_12px_-2px_rgba(0,0,0,0.5)]"
+            >
+              <HelpCircle className="h-5 w-5 text-muted-foreground" />
+            </Button>
+            
+            <TabsList className="w-full">
+              <TabsTrigger value="about">About Me</TabsTrigger>
+              <TabsTrigger value="experiences">Experiences</TabsTrigger>
+              <TabsTrigger value="recommended">Recommended</TabsTrigger>
+            </TabsList>
+          </div>
 
           <TabsContent value="about" className="mt-6 animate-in fade-in-50 slide-in-from-bottom-2 duration-300">
             <div className="bg-gradient-to-b from-[hsl(0,0%,20%)] to-[hsl(0,0%,18%)] rounded-3xl p-6 shadow-[0_4px_12px_-2px_rgba(0,0,0,0.3)]">

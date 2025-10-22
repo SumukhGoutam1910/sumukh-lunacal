@@ -46,6 +46,7 @@ All colors MUST be HSL.
     
     /* Gradients */
     --gradient-section: linear-gradient(180deg, hsl(0 0% 18%) 0%, hsl(0 0% 16%) 100%);
+    --gradient-help: linear-gradient(135deg, hsl(0 0% 28%) 0%, hsl(0 0% 22%) 100%);
   }
 }
 
