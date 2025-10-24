@@ -78,7 +78,7 @@ const ProfileSection = () => {
               </TabsList>
 
                 <TabsContent value="about" className="animate-in fade-in-50 duration-300">
-                  <div className="space-y-3 md:space-y-4 text-[#969696] text-[13px] md:text-[15px] leading-[1.6] p-2">
+                  <div className="space-y-3 md:space-y-4 text-[#969696] text-[17px] md:text-[19px] leading-[1.3] p-2">
                     <p>
                       Hello! I'm Dave, your sales rep here from Salesforce. I've been working at this awesome company for 3 years now.
                     </p>
