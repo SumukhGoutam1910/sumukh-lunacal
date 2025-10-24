@@ -2,15 +2,16 @@ import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, ArrowRight, Plus, HelpCircle } from "lucide-react";
-import gallery1 from "@/assets/gallery-1.jpg";
-import gallery2 from "@/assets/gallery-2.jpg";
-import gallery3 from "@/assets/gallery-3.jpg";
 
 const ProfileSection = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [activeTab, setActiveTab] = useState("about");
   
-  const galleryImages = [gallery1, gallery2, gallery3];
+  const galleryImages = [
+    "https://images.unsplash.com/photo-1518005020951-eccb494ad742?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3MjAxN3wwfDF8c2VhcmNofDd8fGFyY2hpdGVjdHVyZXxlbnwwfHx8fDE3NjEzMzM2Mjh8MA&ixlib=rb-4.1.0&q=85&q=85&fmt=jpg&crop=entropy&cs=tinysrgb&w=450",
+    "https://images.unsplash.com/photo-1518005020951-eccb494ad742?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3MjAxN3wwfDF8c2VhcmNofDd8fGFyY2hpdGVjdHVyZXxlbnwwfHx8fDE3NjEzMzM2Mjh8MA&ixlib=rb-4.1.0&q=85&q=85&fmt=jpg&crop=entropy&cs=tinysrgb&w=450",
+    "https://images.unsplash.com/photo-1518005020951-eccb494ad742?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3MjAxN3wwfDF8c2VhcmNofDd8fGFyY2hpdGVjdHVyZXxlbnwwfHx8fDE3NjEzMzM2Mjh8MA&ixlib=rb-4.1.0&q=85&q=85&fmt=jpg&crop=entropy&cs=tinysrgb&w=450"
+  ];
 
   const handlePrevImage = () => {
     setCurrentImageIndex((prev) => (prev === 0 ? galleryImages.length - 1 : prev - 1));
@@ -120,7 +121,7 @@ const ProfileSection = () => {
         </div>
 
         {/* Divider */}
-        <div className="h-1 bg-gradient-to-r from-[#888989] via-[#4A4E54] to-[#888989] rounded-full shadow-[0_4px_4px_rgba(0,0,0,0.33)]" />
+        <div className="h-1 w-[86%] mx-auto bg-gradient-to-r from-[#888989] via-[#4A4E54] to-[#888989] rounded-full shadow-[0_4px_4px_rgba(0,0,0,0.33)]" />
 
           {/* Bottom Container - Gallery Section */}
           <div className="bg-[#363C43] rounded-[20px] md:rounded-[27px] shadow-[0_4px_8px_rgba(0,0,0,0.4)] p-4 md:p-6 pl-1 flex gap-2 md:gap-3">
