@@ -30,8 +30,16 @@ const ProfileSection = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#1E1E1E] p-12 flex items-center justify-center">
-      <div className="w-full max-w-[720px] space-y-6">
+    <div className="min-h-screen bg-[#1E1E1E] p-12 flex items-start justify-center gap-8">
+      {/* Left Container - Widget/Empty Space */}
+      <div className="w-[936px] self-stretch bg-[#616161] rounded-[27px] shadow-[0_4px_8px_rgba(0,0,0,0.4)]" style={{
+        border: '2px solid #96BEE7'
+      }}>
+        {/* Empty widget container */}
+      </div>
+
+      {/* Right Section - Tabs and Gallery */}
+      <div className="w-full max-w-[720px] space-y-6 flex-shrink-0">
         {/* Top Container - Tabs Section */}
         <div className="bg-[#363C43] rounded-[27px] shadow-[0_4px_8px_rgba(0,0,0,0.4)] p-8 pl-1 flex gap-3">
           {/* Left Column - Question Mark Icon */}
@@ -158,12 +166,14 @@ const ProfileSection = () => {
               {galleryImages.map((image, index) => (
                 <div 
                   key={index}
-                  className="aspect-square rounded-[18px] overflow-hidden transition-all duration-300 hover:scale-[1.02] cursor-pointer"
+                  className="aspect-square rounded-[18px] overflow-visible cursor-pointer group"
+                  style={{ perspective: '1000px' }}
                 >
                   <img 
                     src={image} 
                     alt={`Gallery image ${index + 1}`}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover rounded-[18px] grayscale group-hover:grayscale-0 transition-all duration-1000 ease-out origin-bottom-left group-hover:-rotate-[5deg] group-hover:scale-105"
+                    style={{ transformOrigin: '0% 100%' }}
                   />
                 </div>
               ))}
