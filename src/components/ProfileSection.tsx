@@ -44,7 +44,7 @@ const ProfileSection = () => {
           {/* Top Container - Tabs Section */}
           <div className="bg-[#363C43] rounded-[20px] md:rounded-[27px] shadow-[0_4px_8px_rgba(0,0,0,0.4)] p-4 md:p-6 pl-1 flex gap-2 md:gap-3">
           {/* Left Column - Question Mark Icon */}
-          <div className="flex flex-col pt-1">
+          <div className="flex flex-col items-center gap-16 pt-1 px-0">
             <div className="h-12 w-12 flex items-center justify-center">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <defs>
@@ -60,6 +60,15 @@ const ProfileSection = () => {
                 <circle cx="12" cy="12" r="10" stroke="url(#silverGradient)" strokeWidth="2" fill="none"/>
                 <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3M12 17h.01" stroke="url(#silverGradient)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
+            </div>
+            {/* 6-square grid menu */}
+            <div className="grid grid-cols-2 gap-0.5 w-6">
+              <div className="aspect-square bg-[#4A4E54] rounded-xs"></div>
+              <div className="aspect-square bg-[#4A4E54] rounded-xs"></div>
+              <div className="aspect-square bg-[#4A4E54] rounded-xs"></div>
+              <div className="aspect-square bg-[#4A4E54] rounded-xs"></div>
+              <div className="aspect-square bg-[#4A4E54] rounded-xs"></div>
+              <div className="aspect-square bg-[#4A4E54] rounded-xs"></div>
             </div>
           </div>
 
@@ -113,12 +122,21 @@ const ProfileSection = () => {
           {/* Bottom Container - Gallery Section */}
           <div className="bg-[#363C43] rounded-[20px] md:rounded-[27px] shadow-[0_4px_8px_rgba(0,0,0,0.4)] p-4 md:p-6 pl-1 flex gap-2 md:gap-3">
           {/* Left Column - Question Mark Icon */}
-          <div className="flex flex-col pt-1">
+          <div className="flex flex-col items-center gap-16 pt-1 px-0">
             <div className="h-12 w-12 flex items-center justify-center">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="12" cy="12" r="10" stroke="url(#silverGradient)" strokeWidth="2" fill="none"/>
                 <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3M12 17h.01" stroke="url(#silverGradient)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
+            </div>
+            {/* 6-square grid menu */}
+            <div className="grid grid-cols-2 gap-0.5 w-6">
+              <div className="aspect-square bg-[#4A4E54] rounded-xs"></div>
+              <div className="aspect-square bg-[#4A4E54] rounded-xs"></div>
+              <div className="aspect-square bg-[#4A4E54] rounded-xs"></div>
+              <div className="aspect-square bg-[#4A4E54] rounded-xs"></div>
+              <div className="aspect-square bg-[#4A4E54] rounded-xs"></div>
+              <div className="aspect-square bg-[#4A4E54] rounded-xs"></div>
             </div>
           </div>
 
