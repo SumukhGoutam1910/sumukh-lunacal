@@ -2,14 +2,13 @@ import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight, Plus, HelpCircle } from "lucide-react";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { Separator } from "@/components/ui/separator";
 import gallery1 from "@/assets/gallery-1.jpg";
 import gallery2 from "@/assets/gallery-2.jpg";
 import gallery3 from "@/assets/gallery-3.jpg";
 
 const ProfileSection = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [activeTab, setActiveTab] = useState("about");
   
   const galleryImages = [gallery1, gallery2, gallery3];
 
@@ -21,119 +20,154 @@ const ProfileSection = () => {
     setCurrentImageIndex((prev) => (prev === galleryImages.length - 1 ? 0 : prev + 1));
   };
 
+  const getTabPosition = () => {
+    switch(activeTab) {
+      case "about": return 0;
+      case "experiences": return 1;
+      case "recommended": return 2;
+      default: return 0;
+    }
+  };
+
   return (
-    <div className="min-h-screen bg-background p-8 flex items-center justify-center">
-      <div className="w-full max-w-2xl space-y-6 bg-gradient-to-b from-[hsl(0,0%,18%)] to-[hsl(0,0%,16%)] p-8 rounded-3xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.6)]">
-        {/* Tabs Section with Help Icon */}
-        <Tabs defaultValue="about" className="w-full">
-          <div className="relative">
-            {/* Help Icon - positioned inside */}
-            <Button 
-              variant="ghost" 
-              size="icon" 
-              className="absolute left-2 top-2 z-20 rounded-full bg-gradient-to-br from-[hsl(0,0%,28%)] to-[hsl(0,0%,22%)] hover:from-[hsl(0,0%,32%)] hover:to-[hsl(0,0%,26%)] shadow-[0_4px_12px_-2px_rgba(0,0,0,0.5)]"
-            >
-              <HelpCircle className="h-5 w-5 text-muted-foreground" />
-            </Button>
-            
-            <TabsList className="w-full">
-              <TabsTrigger value="about">About Me</TabsTrigger>
-              <TabsTrigger value="experiences">Experiences</TabsTrigger>
-              <TabsTrigger value="recommended">Recommended</TabsTrigger>
-            </TabsList>
+    <div className="min-h-screen bg-[#1E1E1E] p-12 flex items-center justify-center">
+      <div className="w-full max-w-[720px] space-y-6">
+        {/* Top Container - Tabs Section */}
+        <div className="bg-[#363C43] rounded-[27px] shadow-[0_4px_8px_rgba(0,0,0,0.4)] p-8 pl-1 flex gap-3">
+          {/* Left Column - Question Mark Icon */}
+          <div className="flex flex-col pt-1">
+            <div className="h-12 w-12 flex items-center justify-center">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="silverGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#E8EBED" />
+                    <stop offset="25%" stopColor="#F5F7F8" />
+                    <stop offset="50%" stopColor="#C8CDD1" />
+                    <stop offset="75%" stopColor="#6B7279" />
+                    <stop offset="90%" stopColor="#3A3F45" />
+                    <stop offset="100%" stopColor="#252A2E" />
+                  </linearGradient>
+                </defs>
+                <circle cx="12" cy="12" r="10" stroke="url(#silverGradient)" strokeWidth="2" fill="none"/>
+                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3M12 17h.01" stroke="url(#silverGradient)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </div>
           </div>
 
-          <TabsContent value="about" className="mt-6 animate-in fade-in-50 slide-in-from-bottom-2 duration-300">
-            <div className="bg-gradient-to-b from-[hsl(0,0%,20%)] to-[hsl(0,0%,18%)] rounded-3xl p-6 shadow-[0_4px_12px_-2px_rgba(0,0,0,0.3)]">
-              <ScrollArea className="h-48 pr-4">
-                <div className="space-y-4 text-foreground">
-                  <p className="leading-relaxed">
+          {/* Right Column - Tabs Content */}
+          <div className="flex-1">
+            <Tabs defaultValue="about" value={activeTab} onValueChange={setActiveTab} className="w-full">
+              <TabsList className="w-full mb-6 relative overflow-hidden">
+                {/* Sliding background indicator */}
+                <div 
+                  className="absolute top-[6px] left-[6px] h-[calc(100%-12px)] w-[calc(33.333%-6px)] bg-[#28292F] rounded-[16px] shadow-[0_8px_24px_rgba(0,0,0,0.6),inset_0_0_0_0.5px_rgba(255,255,255,0.08),0_4px_12px_rgba(0,0,0,0.4)] transition-all duration-300 ease-in-out z-0"
+                  style={{ transform: `translateX(calc(${getTabPosition()} * 100%))` }}
+                />
+                <TabsTrigger value="about" className="data-[state=active]:bg-transparent data-[state=active]:shadow-none">About Me</TabsTrigger>
+                <TabsTrigger value="experiences" className="data-[state=active]:bg-transparent data-[state=active]:shadow-none">Experiences</TabsTrigger>
+                <TabsTrigger value="recommended" className="data-[state=active]:bg-transparent data-[state=active]:shadow-none">Recommended</TabsTrigger>
+              </TabsList>
+
+              <TabsContent value="about" className="animate-in fade-in-50 duration-300">
+                <div className="space-y-4 text-[#969696] text-[15px] leading-[1.6] p-2">
+                  <p>
                     Hello! I'm Dave, your sales rep here from Salesforce. I've been working at this awesome company for 3 years now.
                   </p>
-                  <p className="leading-relaxed">
+                  <p>
                     I was born and raised in Albany, NY & have been living in Santa Carla for the past 10 years my wife Tiffany and my 4 year old twin daughters- Emma and Ella. Both of them are just starting school, so my calendar is usually blocked between 9-10 AM. This is a...
                   </p>
                 </div>
-              </ScrollArea>
-            </div>
-          </TabsContent>
+              </TabsContent>
 
-          <TabsContent value="experiences" className="mt-6 animate-in fade-in-50 slide-in-from-bottom-2 duration-300">
-            <div className="bg-gradient-to-b from-[hsl(0,0%,20%)] to-[hsl(0,0%,18%)] rounded-3xl p-6 shadow-[0_4px_12px_-2px_rgba(0,0,0,0.3)]">
-              <ScrollArea className="h-48 pr-4">
-                <div className="space-y-4 text-foreground">
-                  <p className="leading-relaxed">
+              <TabsContent value="experiences" className="animate-in fade-in-50 duration-300">
+                <div className="space-y-4 text-[#969696] text-[15px] leading-[1.6] p-2">
+                  <p>
                     My professional journey includes various roles and accomplishments across different companies and industries.
                   </p>
                 </div>
-              </ScrollArea>
-            </div>
-          </TabsContent>
+              </TabsContent>
 
-          <TabsContent value="recommended" className="mt-6 animate-in fade-in-50 slide-in-from-bottom-2 duration-300">
-            <div className="bg-gradient-to-b from-[hsl(0,0%,20%)] to-[hsl(0,0%,18%)] rounded-3xl p-6 shadow-[0_4px_12px_-2px_rgba(0,0,0,0.3)]">
-              <ScrollArea className="h-48 pr-4">
-                <div className="space-y-4 text-foreground">
-                  <p className="leading-relaxed">
+              <TabsContent value="recommended" className="animate-in fade-in-50 duration-300">
+                <div className="space-y-4 text-[#969696] text-[15px] leading-[1.6] p-2">
+                  <p>
                     Here are some recommendations and testimonials from colleagues and clients I've worked with.
                   </p>
                 </div>
-              </ScrollArea>
-            </div>
-          </TabsContent>
-        </Tabs>
+              </TabsContent>
+            </Tabs>
+          </div>
+        </div>
 
         {/* Divider */}
-        <Separator className="bg-border/40" />
+        <div className="h-1 bg-gradient-to-r from-[#888989] via-[#4A4E54] to-[#888989] rounded-full shadow-[0_4px_4px_rgba(0,0,0,0.33)]" />
 
-        {/* Gallery Section */}
-        <div className="space-y-6">
-          <div className="flex items-center justify-between">
-            <Button variant="dark" className="px-8 py-3 text-base font-semibold">
-              Gallery
-            </Button>
-            
-            <div className="flex items-center gap-4">
-              <Button variant="dark-outline" className="gap-2 px-6 py-3 text-sm font-semibold">
-                <Plus className="h-4 w-4" />
-                ADD IMAGE
-              </Button>
-              
-              <div className="flex gap-2">
-                <Button 
-                  variant="ghost" 
-                  size="icon" 
-                  className="rounded-full bg-accent/60 hover:bg-accent shadow-[0_6px_12px_-3px_rgba(0,0,0,0.4)] hover:shadow-[0_8px_16px_-4px_rgba(0,0,0,0.5)] transition-all hover:translate-y-[-2px]"
-                  onClick={handlePrevImage}
-                >
-                  <ChevronLeft className="h-5 w-5" />
-                </Button>
-                <Button 
-                  variant="ghost" 
-                  size="icon" 
-                  className="rounded-full bg-accent/60 hover:bg-accent shadow-[0_6px_12px_-3px_rgba(0,0,0,0.4)] hover:shadow-[0_8px_16px_-4px_rgba(0,0,0,0.5)] transition-all hover:translate-y-[-2px]"
-                  onClick={handleNextImage}
-                >
-                  <ChevronRight className="h-5 w-5" />
-                </Button>
-              </div>
+        {/* Bottom Container - Gallery Section */}
+        <div className="bg-[#363C43] rounded-[27px] shadow-[0_4px_8px_rgba(0,0,0,0.4)] p-8 pl-1 flex gap-3">
+          {/* Left Column - Question Mark Icon */}
+          <div className="flex flex-col pt-1">
+            <div className="h-12 w-12 flex items-center justify-center">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="10" stroke="url(#silverGradient)" strokeWidth="2" fill="none"/>
+                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3M12 17h.01" stroke="url(#silverGradient)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
             </div>
           </div>
 
-          {/* Gallery Images */}
-          <div className="grid grid-cols-3 gap-4">
-            {galleryImages.map((image, index) => (
-              <div 
-                key={index}
-                className="aspect-square rounded-3xl overflow-hidden bg-accent transition-all duration-300 hover:scale-105 hover:shadow-[0_12px_24px_-6px_rgba(0,0,0,0.6)] cursor-pointer shadow-[0_8px_16px_-4px_rgba(0,0,0,0.4)]"
+          {/* Right Column - Gallery Content */}
+          <div className="flex-1 space-y-6">
+            <div className="flex items-center justify-between">
+              <Button 
+                variant="ghost" 
+                className="bg-[#171717] hover:bg-[#2A2A2A] text-white px-9 py-3.5 text-[18px] font-medium rounded-[18px] shadow-[0_4px_10px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.05)] h-auto"
               >
-                <img 
-                  src={image} 
-                  alt={`Gallery image ${index + 1}`}
-                  className="w-full h-full object-cover"
-                />
+                Gallery
+              </Button>
+              
+              <div className="flex items-center gap-6">
+                <Button 
+                  variant="ghost" 
+                  className="gap-2 px-7 py-3.5 text-[13px] font-semibold bg-[#FFFFFF]/[0.02] hover:bg-[#FFFFFF]/[0.08] text-white rounded-[104px] shadow-[0_0_0_1.8px_rgba(255,255,255,0.1),0_4px_10px_rgba(0,0,0,0.5),inset_0_0_48px_rgba(255,255,255,0.05)] h-auto uppercase tracking-wide"
+                >
+                  <Plus className="h-3.5 w-3.5" />
+                  ADD IMAGE
+                </Button>
+                
+                <div className="flex gap-3">
+                  <Button 
+                    variant="ghost" 
+                    size="icon" 
+                    className="h-11 w-11 rounded-full bg-gradient-to-b from-[#313539] to-[#1A1D1F] hover:from-[#3A3E43] hover:to-[#1E2022] shadow-[0_4px_10px_rgba(0,0,0,0.6),inset_0_2px_2px_rgba(255,255,255,0.05)] text-[#6F787C]"
+                    onClick={handlePrevImage}
+                  >
+                    <ChevronLeft className="h-5 w-5" />
+                  </Button>
+                  <Button 
+                    variant="ghost" 
+                    size="icon" 
+                    className="h-11 w-11 rounded-full bg-gradient-to-b from-[#313539] to-[#1A1D1F] hover:from-[#3A3E43] hover:to-[#1E2022] shadow-[0_4px_10px_rgba(0,0,0,0.6),inset_0_2px_2px_rgba(255,255,255,0.05)] text-[#6F787C]"
+                    onClick={handleNextImage}
+                  >
+                    <ChevronRight className="h-5 w-5" />
+                  </Button>
+                </div>
               </div>
-            ))}
+            </div>
+
+            {/* Gallery Images */}
+            <div className="grid grid-cols-3 gap-4">
+              {galleryImages.map((image, index) => (
+                <div 
+                  key={index}
+                  className="aspect-square rounded-[18px] overflow-hidden transition-all duration-300 hover:scale-[1.02] cursor-pointer"
+                >
+                  <img 
+                    src={image} 
+                    alt={`Gallery image ${index + 1}`}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

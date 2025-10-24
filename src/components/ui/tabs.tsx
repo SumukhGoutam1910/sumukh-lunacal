@@ -12,7 +12,7 @@ const TabsList = React.forwardRef<
   <TabsPrimitive.List
     ref={ref}
     className={cn(
-      "inline-flex h-auto items-center justify-center rounded-[20px] bg-[hsl(0,0%,16%)] p-1 gap-0 w-full shadow-[0_8px_16px_-4px_rgba(0,0,0,0.5),0_4px_8px_-2px_rgba(0,0,0,0.3)] relative",
+      "inline-flex h-auto items-center justify-center rounded-[23px] bg-[#171717] p-[6px] gap-[6px] w-full shadow-[inset_0_0_0_1px_rgba(255,255,255,0.05),0_4px_16px_rgba(0,0,0,0.5)] relative",
       className,
     )}
     {...props}
@@ -27,7 +27,7 @@ const TabsTrigger = React.forwardRef<
   <TabsPrimitive.Trigger
     ref={ref}
     className={cn(
-      "inline-flex items-center justify-center whitespace-nowrap rounded-[16px] px-6 py-3 text-base font-semibold transition-all duration-500 ease-out data-[state=active]:bg-[hsl(0,0%,18%)] data-[state=active]:text-foreground data-[state=active]:shadow-[0_6px_20px_-4px_rgba(0,0,0,0.7),0_10px_25px_-5px_rgba(0,0,0,0.5)] data-[state=active]:translate-y-[-2px] data-[state=inactive]:text-muted-foreground hover:text-foreground focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 flex-1 relative z-10",
+      "inline-flex items-center justify-center whitespace-nowrap rounded-[16px] px-6 py-[14px] text-[17px] font-medium transition-all duration-300 ease-in-out data-[state=active]:bg-[#28292F] data-[state=active]:text-white data-[state=active]:shadow-[0_8px_24px_rgba(0,0,0,0.6),inset_0_0_0_0.5px_rgba(255,255,255,0.08),0_4px_12px_rgba(0,0,0,0.4)] data-[state=inactive]:text-[#A3ADB2] hover:text-white focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 flex-1 relative z-10",
       className,
     )}
     {...props}
