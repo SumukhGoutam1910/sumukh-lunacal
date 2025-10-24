@@ -30,18 +30,19 @@ const ProfileSection = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#1E1E1E] p-12 flex items-start justify-center gap-8">
-      {/* Left Container - Widget/Empty Space */}
-      <div className="w-[936px] self-stretch bg-[#616161] rounded-[27px] shadow-[0_4px_8px_rgba(0,0,0,0.4)]" style={{
-        border: '2px solid #96BEE7'
-      }}>
-        {/* Empty widget container */}
-      </div>
+    <div className="min-h-screen bg-[#1E1E1E] py-4 px-4 md:py-6 md:px-6 lg:py-6 lg:pl-4 lg:pr-8 flex items-center justify-center">
+      <div className="w-full max-w-[1800px] flex flex-col lg:flex-row items-center lg:items-center justify-center gap-4 md:gap-5 lg:gap-5">
+        {/* Left Container - Widget/Empty Space */}
+        <div className="w-full lg:w-[46%] lg:max-w-[936px] h-[300px] md:h-[400px] lg:h-auto lg:self-stretch bg-[#616161] rounded-[20px] md:rounded-[27px] shadow-[0_4px_8px_rgba(0,0,0,0.4)]" style={{
+          border: '2px solid #96BEE7'
+        }}>
+          {/* Empty widget container */}
+        </div>
 
-      {/* Right Section - Tabs and Gallery */}
-      <div className="w-full max-w-[720px] space-y-6 flex-shrink-0">
-        {/* Top Container - Tabs Section */}
-        <div className="bg-[#363C43] rounded-[27px] shadow-[0_4px_8px_rgba(0,0,0,0.4)] p-8 pl-1 flex gap-3">
+        {/* Right Section - Tabs and Gallery */}
+        <div className="w-full lg:max-w-[720px] lg:flex-shrink-0 space-y-3 md:space-y-4">
+          {/* Top Container - Tabs Section */}
+          <div className="bg-[#363C43] rounded-[20px] md:rounded-[27px] shadow-[0_4px_8px_rgba(0,0,0,0.4)] p-4 md:p-6 pl-1 flex gap-2 md:gap-3">
           {/* Left Column - Question Mark Icon */}
           <div className="flex flex-col pt-1">
             <div className="h-12 w-12 flex items-center justify-center">
@@ -62,10 +63,10 @@ const ProfileSection = () => {
             </div>
           </div>
 
-          {/* Right Column - Tabs Content */}
-          <div className="flex-1">
-            <Tabs defaultValue="about" value={activeTab} onValueChange={setActiveTab} className="w-full">
-              <TabsList className="w-full mb-6 relative overflow-hidden">
+            {/* Right Column - Tabs Content */}
+            <div className="flex-1">
+              <Tabs defaultValue="about" value={activeTab} onValueChange={setActiveTab} className="w-full">
+                <TabsList className="w-full mb-3 md:mb-4 relative overflow-hidden">
                 {/* Sliding background indicator */}
                 <div 
                   className="absolute top-[6px] left-[6px] h-[calc(100%-12px)] w-[calc(33.333%-6px)] bg-[#28292F] rounded-[16px] shadow-[0_8px_24px_rgba(0,0,0,0.6),inset_0_0_0_0.5px_rgba(255,255,255,0.08),0_4px_12px_rgba(0,0,0,0.4)] transition-all duration-300 ease-in-out z-0"
@@ -76,27 +77,27 @@ const ProfileSection = () => {
                 <TabsTrigger value="recommended" className="data-[state=active]:bg-transparent data-[state=active]:shadow-none">Recommended</TabsTrigger>
               </TabsList>
 
-              <TabsContent value="about" className="animate-in fade-in-50 duration-300">
-                <div className="space-y-4 text-[#969696] text-[15px] leading-[1.6] p-2">
-                  <p>
-                    Hello! I'm Dave, your sales rep here from Salesforce. I've been working at this awesome company for 3 years now.
-                  </p>
-                  <p>
-                    I was born and raised in Albany, NY & have been living in Santa Carla for the past 10 years my wife Tiffany and my 4 year old twin daughters- Emma and Ella. Both of them are just starting school, so my calendar is usually blocked between 9-10 AM. This is a...
-                  </p>
-                </div>
-              </TabsContent>
+                <TabsContent value="about" className="animate-in fade-in-50 duration-300">
+                  <div className="space-y-3 md:space-y-4 text-[#969696] text-[13px] md:text-[15px] leading-[1.6] p-2">
+                    <p>
+                      Hello! I'm Dave, your sales rep here from Salesforce. I've been working at this awesome company for 3 years now.
+                    </p>
+                    <p>
+                      I was born and raised in Albany, NY & have been living in Santa Carla for the past 10 years my wife Tiffany and my 4 year old twin daughters- Emma and Ella. Both of them are just starting school, so my calendar is usually blocked between 9-10 AM. This is a...
+                    </p>
+                  </div>
+                </TabsContent>
 
-              <TabsContent value="experiences" className="animate-in fade-in-50 duration-300">
-                <div className="space-y-4 text-[#969696] text-[15px] leading-[1.6] p-2">
-                  <p>
-                    My professional journey includes various roles and accomplishments across different companies and industries.
-                  </p>
-                </div>
-              </TabsContent>
+                <TabsContent value="experiences" className="animate-in fade-in-50 duration-300">
+                  <div className="space-y-3 md:space-y-4 text-[#969696] text-[13px] md:text-[15px] leading-[1.6] p-2">
+                    <p>
+                      My professional journey includes various roles and accomplishments across different companies and industries.
+                    </p>
+                  </div>
+                </TabsContent>
 
-              <TabsContent value="recommended" className="animate-in fade-in-50 duration-300">
-                <div className="space-y-4 text-[#969696] text-[15px] leading-[1.6] p-2">
+                <TabsContent value="recommended" className="animate-in fade-in-50 duration-300">
+                  <div className="space-y-3 md:space-y-4 text-[#969696] text-[13px] md:text-[15px] leading-[1.6] p-2">
                   <p>
                     Here are some recommendations and testimonials from colleagues and clients I've worked with.
                   </p>
@@ -109,8 +110,8 @@ const ProfileSection = () => {
         {/* Divider */}
         <div className="h-1 bg-gradient-to-r from-[#888989] via-[#4A4E54] to-[#888989] rounded-full shadow-[0_4px_4px_rgba(0,0,0,0.33)]" />
 
-        {/* Bottom Container - Gallery Section */}
-        <div className="bg-[#363C43] rounded-[27px] shadow-[0_4px_8px_rgba(0,0,0,0.4)] p-8 pl-1 flex gap-3">
+          {/* Bottom Container - Gallery Section */}
+          <div className="bg-[#363C43] rounded-[20px] md:rounded-[27px] shadow-[0_4px_8px_rgba(0,0,0,0.4)] p-4 md:p-6 pl-1 flex gap-2 md:gap-3">
           {/* Left Column - Question Mark Icon */}
           <div className="flex flex-col pt-1">
             <div className="h-12 w-12 flex items-center justify-center">
@@ -121,62 +122,63 @@ const ProfileSection = () => {
             </div>
           </div>
 
-          {/* Right Column - Gallery Content */}
-          <div className="flex-1 space-y-6">
-            <div className="flex items-center justify-between">
-              <Button 
-                variant="ghost" 
-                className="bg-[#171717] hover:bg-[#2A2A2A] text-white px-9 py-3.5 text-[18px] font-medium rounded-[18px] shadow-[0_4px_10px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.05)] h-auto"
-              >
-                Gallery
-              </Button>
-              
-              <div className="flex items-center gap-6">
+            {/* Right Column - Gallery Content */}
+            <div className="flex-1 space-y-3 md:space-y-4">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-0">
                 <Button 
                   variant="ghost" 
-                  className="gap-2 px-7 py-3.5 text-[13px] font-semibold bg-[#FFFFFF]/[0.02] hover:bg-[#FFFFFF]/[0.08] text-white rounded-[104px] shadow-[0_0_0_1.8px_rgba(255,255,255,0.1),0_4px_10px_rgba(0,0,0,0.5),inset_0_0_48px_rgba(255,255,255,0.05)] h-auto uppercase tracking-wide"
+                  className="bg-[#171717] hover:bg-[#2A2A2A] text-white px-6 md:px-9 py-2.5 md:py-3.5 text-[16px] md:text-[18px] font-medium rounded-[18px] shadow-[0_4px_10px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.05)] h-auto"
                 >
-                  <Plus className="h-3.5 w-3.5" />
-                  ADD IMAGE
+                  Gallery
                 </Button>
                 
-                <div className="flex gap-3">
+                <div className="flex items-center gap-4 md:gap-6 w-full sm:w-auto justify-between sm:justify-end">
                   <Button 
                     variant="ghost" 
-                    size="icon" 
-                    className="h-11 w-11 rounded-full bg-gradient-to-b from-[#313539] to-[#1A1D1F] hover:from-[#3A3E43] hover:to-[#1E2022] shadow-[0_4px_10px_rgba(0,0,0,0.6),inset_0_2px_2px_rgba(255,255,255,0.05)] text-[#6F787C]"
-                    onClick={handlePrevImage}
+                    className="gap-2 px-5 md:px-7 py-2.5 md:py-3.5 text-[11px] md:text-[13px] font-semibold bg-[#FFFFFF]/[0.02] hover:bg-[#FFFFFF]/[0.08] text-white rounded-[104px] shadow-[0_0_0_1.8px_rgba(255,255,255,0.1),0_4px_10px_rgba(0,0,0,0.5),inset_0_0_48px_rgba(255,255,255,0.05),3px_0_6px_rgba(255,255,255,0.15),0_-3px_6px_rgba(255,255,255,0.15)] h-auto uppercase tracking-wide"
                   >
-                    <ChevronLeft className="h-5 w-5" />
+                    <Plus className="h-3 w-3 md:h-3.5 md:w-3.5" />
+                    ADD IMAGE
                   </Button>
-                  <Button 
-                    variant="ghost" 
-                    size="icon" 
-                    className="h-11 w-11 rounded-full bg-gradient-to-b from-[#313539] to-[#1A1D1F] hover:from-[#3A3E43] hover:to-[#1E2022] shadow-[0_4px_10px_rgba(0,0,0,0.6),inset_0_2px_2px_rgba(255,255,255,0.05)] text-[#6F787C]"
-                    onClick={handleNextImage}
-                  >
-                    <ChevronRight className="h-5 w-5" />
-                  </Button>
+                  
+                  <div className="flex gap-2 md:gap-3">
+                    <Button 
+                      variant="ghost" 
+                      size="icon" 
+                      className="h-9 w-9 md:h-11 md:w-11 rounded-full bg-gradient-to-b from-[#313539] to-[#1A1D1F] hover:from-[#3A3E43] hover:to-[#1E2022] shadow-[0_4px_10px_rgba(0,0,0,0.6),inset_0_2px_2px_rgba(255,255,255,0.05),3px_0_5px_rgba(255,255,255,0.12),0_-3px_5px_rgba(255,255,255,0.12)] text-[#6F787C]"
+                      onClick={handlePrevImage}
+                    >
+                      <ChevronLeft className="h-4 w-4 md:h-5 md:w-5" />
+                    </Button>
+                    <Button 
+                      variant="ghost" 
+                      size="icon" 
+                      className="h-9 w-9 md:h-11 md:w-11 rounded-full bg-gradient-to-b from-[#313539] to-[#1A1D1F] hover:from-[#3A3E43] hover:to-[#1E2022] shadow-[0_4px_10px_rgba(0,0,0,0.6),inset_0_2px_2px_rgba(255,255,255,0.05),3px_0_5px_rgba(255,255,255,0.12),0_-3px_5px_rgba(255,255,255,0.12)] text-[#6F787C]"
+                      onClick={handleNextImage}
+                    >
+                      <ChevronRight className="h-4 w-4 md:h-5 md:w-5" />
+                    </Button>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            {/* Gallery Images */}
-            <div className="grid grid-cols-3 gap-4">
-              {galleryImages.map((image, index) => (
-                <div 
-                  key={index}
-                  className="aspect-square rounded-[18px] overflow-visible cursor-pointer group"
-                  style={{ perspective: '1000px' }}
-                >
-                  <img 
-                    src={image} 
-                    alt={`Gallery image ${index + 1}`}
-                    className="w-full h-full object-cover rounded-[18px] grayscale group-hover:grayscale-0 transition-all duration-1000 ease-out origin-bottom-left group-hover:-rotate-[5deg] group-hover:scale-105"
-                    style={{ transformOrigin: '0% 100%' }}
-                  />
-                </div>
-              ))}
+              {/* Gallery Images */}
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 md:gap-4">
+                {galleryImages.map((image, index) => (
+                  <div 
+                    key={index}
+                    className="aspect-square rounded-[15px] md:rounded-[18px] overflow-visible cursor-pointer group"
+                    style={{ perspective: '1000px' }}
+                  >
+                    <img 
+                      src={image} 
+                      alt={`Gallery image ${index + 1}`}
+                      className="w-full h-full object-cover rounded-[15px] md:rounded-[18px] grayscale group-hover:grayscale-0 transition-all duration-1000 ease-out origin-bottom-left group-hover:-rotate-[5deg] group-hover:scale-105"
+                      style={{ transformOrigin: '0% 100%' }}
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
