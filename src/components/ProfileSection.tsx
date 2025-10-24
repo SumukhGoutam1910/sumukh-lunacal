@@ -73,7 +73,7 @@ const ProfileSection = () => {
           </div>
 
             {/* Right Column - Tabs Content */}
-            <div className="flex-1">
+            <div className="flex-1 relative">
               <Tabs defaultValue="about" value={activeTab} onValueChange={setActiveTab} className="w-full">
                 <TabsList className="w-full mb-3 md:mb-4 relative overflow-visible">
                 {/* Sliding background indicator */}
@@ -113,6 +113,9 @@ const ProfileSection = () => {
                 </div>
               </TabsContent>
             </Tabs>
+            
+            {/* Vertical metallic gradient bar on the right */}
+            <div className="absolute -right-3 top-1/2 -translate-y-1/2 w-2 h-16 rounded-lg bg-gradient-to-b from-[#E8EBED] via-[#727475] to-[#4A4E54] shadow-[2px_0_8px_rgba(0,0,0,0.5),-1px_0_4px_rgba(255,255,255,0.1)]"></div>
           </div>
         </div>
 
