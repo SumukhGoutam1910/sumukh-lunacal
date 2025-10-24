@@ -10,6 +10,7 @@ const ProfileSection = () => {
   const [galleryImages, setGalleryImages] = useState([
     "https://images.unsplash.com/photo-1518005020951-eccb494ad742?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3MjAxN3wwfDF8c2VhcmNofDd8fGFyY2hpdGVjdHVyZXxlbnwwfHx8fDE3NjEzMzM2Mjh8MA&ixlib=rb-4.1.0&q=85&q=85&fmt=jpg&crop=entropy&cs=tinysrgb&w=450",
     "https://images.unsplash.com/photo-1518005020951-eccb494ad742?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3MjAxN3wwfDF8c2VhcmNofDd8fGFyY2hpdGVjdHVyZXxlbnwwfHx8fDE3NjEzMzM2Mjh8MA&ixlib=rb-4.1.0&q=85&q=85&fmt=jpg&crop=entropy&cs=tinysrgb&w=450",
+    "https://images.unsplash.com/photo-1518005020951-eccb494ad742?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3MjAxN3wwfDF8c2VhcmNofDd8fGFyY2hpdGVjdHVyZXxlbnwwfHx8fDE3NjEzMzM2Mjh8MA&ixlib=rb-4.1.0&q=85&q=85&fmt=jpg&crop=entropy&cs=tinysrgb&w=450",
     "https://images.unsplash.com/photo-1518005020951-eccb494ad742?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3MjAxN3wwfDF8c2VhcmNofDd8fGFyY2hpdGVjdHVyZXxlbnwwfHx8fDE3NjEzMzM2Mjh8MA&ixlib=rb-4.1.0&q=85&q=85&fmt=jpg&crop=entropy&cs=tinysrgb&w=450"
   ]);
   const [galleryStartIndex, setGalleryStartIndex] = useState(0);
@@ -125,7 +126,7 @@ const ProfileSection = () => {
               </TabsList>
 
                 <TabsContent value="about" className="animate-in fade-in-50 duration-300">
-                  <div className="space-y-3 md:space-y-4 text-[#969696] text-[17px] md:text-[19px] leading-[1.3] p-2">
+                  <div className="space-y-3 md:space-y-4 text-[#969696] text-[17px] md:text-[18.5px] leading-[1.1] p-2">
                     <p>
                       Hello! I'm Dave, your sales rep here from Salesforce. I've been working at this awesome company for 3 years now.
                     </p>
@@ -216,7 +217,7 @@ const ProfileSection = () => {
                     <Button 
                       variant="ghost" 
                       size="icon" 
-                      className="h-9 w-9 md:h-11 md:w-11 rounded-full bg-gradient-to-b from-[#313539] to-[#1A1D1F] hover:from-[#3A3E43] hover:to-[#1E2022] shadow-[0_4px_10px_rgba(0,0,0,0.6),inset_0_2px_2px_rgba(255,255,255,0.05),3px_0_5px_rgba(255,255,255,0.12),0_-3px_5px_rgba(255,255,255,0.12)] text-[#6F787C]"
+                      className="h-9 w-9 md:h-11 md:w-11 rounded-full bg-gradient-to-b from-[#313539] to-[#1A1D1F] hover:from-[#3A3E43] hover:to-[#1E2022] active:bg-gradient-to-br active:from-[#77bcf6] active:to-[#2E3135] shadow-[0_4px_10px_rgba(0,0,0,0.6),inset_0_2px_2px_rgba(255,255,255,0.05),3px_0_5px_rgba(255,255,255,0.12),0_-3px_5px_rgba(255,255,255,0.12)] text-[#6F787C] active:text-white transition-colors"
                       onClick={handlePrevGallery}
                     >
                       <ArrowLeft className="h-7 w-7 md:h-8 md:w-8" strokeWidth={3.5} />
@@ -224,7 +225,7 @@ const ProfileSection = () => {
                     <Button 
                       variant="ghost" 
                       size="icon" 
-                      className="h-9 w-9 md:h-11 md:w-11 rounded-full bg-gradient-to-b from-[#313539] to-[#1A1D1F] hover:from-[#3A3E43] hover:to-[#1E2022] shadow-[0_4px_10px_rgba(0,0,0,0.6),inset_0_2px_2px_rgba(255,255,255,0.05),3px_0_5px_rgba(255,255,255,0.12),0_-3px_5px_rgba(255,255,255,0.12)] text-[#6F787C]"
+                      className="h-9 w-9 md:h-11 md:w-11 rounded-full bg-gradient-to-b from-[#313539] to-[#1A1D1F] hover:from-[#3A3E43] hover:to-[#1E2022] active:bg-gradient-to-br active:from-[#719fc4] active:to-[#2E3135] shadow-[0_4px_10px_rgba(0,0,0,0.6),inset_0_2px_2px_rgba(255,255,255,0.05),3px_0_5px_rgba(255,255,255,0.12),0_-3px_5px_rgba(255,255,255,0.12)] text-[#6F787C] active:text-white transition-colors"
                       onClick={handleNextGallery}
                     >
                       <ArrowRight className="h-7 w-7 md:h-8 md:w-8" strokeWidth={3.5} />
