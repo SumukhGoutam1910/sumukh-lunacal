@@ -225,7 +225,7 @@ const ProfileSection = () => {
                     <Button 
                       variant="ghost" 
                       size="icon" 
-                      className="h-9 w-9 md:h-11 md:w-11 rounded-full bg-gradient-to-b from-[#313539] to-[#1A1D1F] hover:from-[#3A3E43] hover:to-[#1E2022] active:bg-gradient-to-br active:from-[#719fc4] active:to-[#2E3135] shadow-[0_4px_10px_rgba(0,0,0,0.6),inset_0_2px_2px_rgba(255,255,255,0.05),3px_0_5px_rgba(255,255,255,0.12),0_-3px_5px_rgba(255,255,255,0.12)] text-[#6F787C] active:text-white transition-colors"
+                      className="h-9 w-9 md:h-11 md:w-11 rounded-full bg-gradient-to-b from-[#313539] to-[#1A1D1F] hover:from-[#3A3E43] hover:to-[#1E2022] active:bg-gradient-to-br active:from-[#77bcf6] active:to-[#2E3135] shadow-[0_4px_10px_rgba(0,0,0,0.6),inset_0_2px_2px_rgba(255,255,255,0.05),3px_0_5px_rgba(255,255,255,0.12),0_-3px_5px_rgba(255,255,255,0.12)] text-[#6F787C] active:text-white transition-colors"
                       onClick={handleNextGallery}
                     >
                       <ArrowRight className="h-7 w-7 md:h-8 md:w-8" strokeWidth={3.5} />
