@@ -128,7 +128,7 @@ const ProfileSection = () => {
                 <TabsContent value="about" className="animate-in fade-in-50 duration-300">
                   <div className="space-y-3 md:space-y-4 text-[#969696] text-[17px] md:text-[18.5px] leading-[1.1] p-2">
                     <p>
-                      Hello! I'm Dave, your sales rep here from Salesforce. I've been working at this awesome company for 3 years now.
+                      Hello! I'm Sumukh, your sales rep here from Salesforce. I've been working at this awesome company for 3 years now.
                     </p>
                     <p>
                       I was born and raised in Albany, NY & have been living in Santa Carla for the past 10 years my wife Tiffany and my 4 year old twin daughters- Emma and Ella. Both of them are just starting school, so my calendar is usually blocked between 9-10 AM. This is a...
