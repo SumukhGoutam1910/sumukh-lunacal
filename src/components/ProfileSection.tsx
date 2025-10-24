@@ -7,11 +7,12 @@ const ProfileSection = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [activeTab, setActiveTab] = useState("about");
   
-  const galleryImages = [
+  const [galleryImages, setGalleryImages] = useState([
     "https://images.unsplash.com/photo-1518005020951-eccb494ad742?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3MjAxN3wwfDF8c2VhcmNofDd8fGFyY2hpdGVjdHVyZXxlbnwwfHx8fDE3NjEzMzM2Mjh8MA&ixlib=rb-4.1.0&q=85&q=85&fmt=jpg&crop=entropy&cs=tinysrgb&w=450",
     "https://images.unsplash.com/photo-1518005020951-eccb494ad742?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3MjAxN3wwfDF8c2VhcmNofDd8fGFyY2hpdGVjdHVyZXxlbnwwfHx8fDE3NjEzMzM2Mjh8MA&ixlib=rb-4.1.0&q=85&q=85&fmt=jpg&crop=entropy&cs=tinysrgb&w=450",
     "https://images.unsplash.com/photo-1518005020951-eccb494ad742?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3MjAxN3wwfDF8c2VhcmNofDd8fGFyY2hpdGVjdHVyZXxlbnwwfHx8fDE3NjEzMzM2Mjh8MA&ixlib=rb-4.1.0&q=85&q=85&fmt=jpg&crop=entropy&cs=tinysrgb&w=450"
-  ];
+  ]);
+  const [galleryStartIndex, setGalleryStartIndex] = useState(0);
 
   const handlePrevImage = () => {
     setCurrentImageIndex((prev) => (prev === 0 ? galleryImages.length - 1 : prev - 1));
@@ -19,6 +20,39 @@ const ProfileSection = () => {
 
   const handleNextImage = () => {
     setCurrentImageIndex((prev) => (prev === galleryImages.length - 1 ? 0 : prev + 1));
+  };
+
+  const handlePrevGallery = () => {
+    if (galleryStartIndex > 0) {
+      setGalleryStartIndex((prev) => prev - 1);
+    } else {
+      // Loop to the end
+      const maxIndex = Math.max(0, galleryImages.length - 3);
+      setGalleryStartIndex(maxIndex);
+    }
+  };
+
+  const handleNextGallery = () => {
+    if (galleryStartIndex < galleryImages.length - 3) {
+      setGalleryStartIndex((prev) => prev + 1);
+    } else {
+      // Loop back to the beginning
+      setGalleryStartIndex(0);
+    }
+  };
+
+  const handleAddImage = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file && file.type.startsWith('image/')) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const imageDataUrl = e.target?.result as string;
+        setGalleryImages((prev) => [...prev, imageDataUrl]);
+      };
+      reader.readAsDataURL(file);
+    }
+    // Reset input value to allow selecting the same file again
+    event.target.value = '';
   };
 
   const getTabPosition = () => {
@@ -29,6 +63,9 @@ const ProfileSection = () => {
       default: return 0;
     }
   };
+
+  // Get visible images (3 at a time)
+  const visibleImages = galleryImages.slice(galleryStartIndex, galleryStartIndex + 3);
 
   return (
     <div className="min-h-screen bg-[#1E1E1E] py-4 px-4 md:py-6 md:px-6 lg:py-6 lg:pl-4 lg:pr-8 flex items-center justify-center">
@@ -155,20 +192,32 @@ const ProfileSection = () => {
                 </Button>
                 
                 <div className="flex items-center gap-4 md:gap-6 w-full sm:w-auto justify-between sm:justify-end">
-                  <Button 
-                    variant="ghost" 
-                    className="gap-2 px-5 md:px-7 py-2.5 md:py-3.5 text-[11px] md:text-[13px] font-semibold bg-[#FFFFFF]/[0.02] hover:bg-[#FFFFFF]/[0.08] text-white rounded-[104px] shadow-[0_0_0_1.8px_rgba(255,255,255,0.1),0_8px_20px_rgba(0,0,0,0.7),inset_0_0_48px_rgba(255,255,255,0.05),3px_0_6px_rgba(255,255,255,0.15),0_-3px_6px_rgba(255,255,255,0.15)] h-auto uppercase tracking-wide"
-                  >
-                    <Plus className="h-3 w-3 md:h-3.5 md:w-3.5" />
-                    ADD IMAGE
-                  </Button>
+                  <label htmlFor="image-upload">
+                    <Button 
+                      variant="ghost" 
+                      className="gap-2 px-5 md:px-7 py-2.5 md:py-3.5 text-[11px] md:text-[13px] font-semibold bg-[#FFFFFF]/[0.02] hover:bg-[#FFFFFF]/[0.08] text-white rounded-[104px] shadow-[0_0_0_1.8px_rgba(255,255,255,0.1),0_8px_20px_rgba(0,0,0,0.7),inset_0_0_48px_rgba(255,255,255,0.05),3px_0_6px_rgba(255,255,255,0.15),0_-3px_6px_rgba(255,255,255,0.15)] h-auto uppercase tracking-wide cursor-pointer"
+                      asChild
+                    >
+                      <span>
+                        <Plus className="h-3 w-3 md:h-3.5 md:w-3.5" />
+                        ADD IMAGE
+                      </span>
+                    </Button>
+                  </label>
+                  <input 
+                    id="image-upload"
+                    type="file" 
+                    accept="image/*"
+                    onChange={handleAddImage}
+                    className="hidden"
+                  />
                   
                   <div className="flex gap-2 md:gap-3">
                     <Button 
                       variant="ghost" 
                       size="icon" 
                       className="h-9 w-9 md:h-11 md:w-11 rounded-full bg-gradient-to-b from-[#313539] to-[#1A1D1F] hover:from-[#3A3E43] hover:to-[#1E2022] shadow-[0_4px_10px_rgba(0,0,0,0.6),inset_0_2px_2px_rgba(255,255,255,0.05),3px_0_5px_rgba(255,255,255,0.12),0_-3px_5px_rgba(255,255,255,0.12)] text-[#6F787C]"
-                      onClick={handlePrevImage}
+                      onClick={handlePrevGallery}
                     >
                       <ArrowLeft className="h-7 w-7 md:h-8 md:w-8" strokeWidth={3.5} />
                     </Button>
@@ -176,7 +225,7 @@ const ProfileSection = () => {
                       variant="ghost" 
                       size="icon" 
                       className="h-9 w-9 md:h-11 md:w-11 rounded-full bg-gradient-to-b from-[#313539] to-[#1A1D1F] hover:from-[#3A3E43] hover:to-[#1E2022] shadow-[0_4px_10px_rgba(0,0,0,0.6),inset_0_2px_2px_rgba(255,255,255,0.05),3px_0_5px_rgba(255,255,255,0.12),0_-3px_5px_rgba(255,255,255,0.12)] text-[#6F787C]"
-                      onClick={handleNextImage}
+                      onClick={handleNextGallery}
                     >
                       <ArrowRight className="h-7 w-7 md:h-8 md:w-8" strokeWidth={3.5} />
                     </Button>
@@ -185,21 +234,30 @@ const ProfileSection = () => {
               </div>
 
               {/* Gallery Images */}
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 md:gap-4">
-                {galleryImages.map((image, index) => (
-                  <div 
-                    key={index}
-                    className="aspect-square rounded-[15px] md:rounded-[18px] overflow-visible cursor-pointer group"
-                    style={{ perspective: '1000px' }}
-                  >
-                    <img 
-                      src={image} 
-                      alt={`Gallery image ${index + 1}`}
-                      className="w-full h-full object-cover rounded-[15px] md:rounded-[18px] grayscale group-hover:grayscale-0 transition-all duration-1000 ease-out origin-bottom-left group-hover:-rotate-[5deg] group-hover:scale-105"
-                      style={{ transformOrigin: '0% 100%' }}
-                    />
-                  </div>
-                ))}
+              <div className="relative overflow-hidden -mx-1 px-1 py-4 -my-4">
+                <div 
+                  className="grid grid-cols-3 gap-3 md:gap-4 transition-transform duration-700 ease-in-out"
+                  style={{ 
+                    transform: `translateX(-${galleryStartIndex * (100 / 3)}%)`,
+                    gridTemplateColumns: `repeat(${galleryImages.length}, minmax(0, 1fr))`,
+                    width: `${(galleryImages.length / 3) * 100}%`
+                  }}
+                >
+                  {galleryImages.map((image, index) => (
+                    <div 
+                      key={index}
+                      className="aspect-square rounded-[15px] md:rounded-[18px] cursor-pointer group"
+                      style={{ perspective: '1000px' }}
+                    >
+                      <img 
+                        src={image} 
+                        alt={`Gallery image ${index + 1}`}
+                        className="w-full h-full object-cover rounded-[15px] md:rounded-[18px] grayscale group-hover:grayscale-0 transition-all duration-1000 ease-out origin-bottom-left group-hover:-rotate-[3deg] group-hover:scale-105"
+                        style={{ transformOrigin: '0% 100%' }}
+                      />
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
