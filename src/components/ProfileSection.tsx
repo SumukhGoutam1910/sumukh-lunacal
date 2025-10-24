@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
-import { ChevronLeft, ChevronRight, Plus, HelpCircle } from "lucide-react";
+import { ArrowLeft, ArrowRight, Plus, HelpCircle } from "lucide-react";
 import gallery1 from "@/assets/gallery-1.jpg";
 import gallery2 from "@/assets/gallery-2.jpg";
 import gallery3 from "@/assets/gallery-3.jpg";
@@ -66,10 +66,10 @@ const ProfileSection = () => {
             {/* Right Column - Tabs Content */}
             <div className="flex-1">
               <Tabs defaultValue="about" value={activeTab} onValueChange={setActiveTab} className="w-full">
-                <TabsList className="w-full mb-3 md:mb-4 relative overflow-hidden">
+                <TabsList className="w-full mb-3 md:mb-4 relative overflow-visible">
                 {/* Sliding background indicator */}
                 <div 
-                  className="absolute top-[6px] left-[6px] h-[calc(100%-12px)] w-[calc(33.333%-6px)] bg-[#28292F] rounded-[16px] shadow-[0_8px_24px_rgba(0,0,0,0.6),inset_0_0_0_0.5px_rgba(255,255,255,0.08),0_4px_12px_rgba(0,0,0,0.4)] transition-all duration-300 ease-in-out z-0"
+                  className="absolute top-[6px] left-[6px] h-[calc(100%-12px)] w-[calc(33.333%-6px)] bg-[#28292F] rounded-[16px] shadow-[0_8px_24px_rgba(0,0,0,0.6),inset_0_0_0_0.5px_rgba(255,255,255,0.08),0_4px_12px_rgba(0,0,0,0.4),-10px_0_20px_rgba(0,0,0,0.5),0_10px_25px_rgba(0,0,0,0.6)] transition-all duration-300 ease-in-out z-0"
                   style={{ transform: `translateX(calc(${getTabPosition()} * 100%))` }}
                 />
                 <TabsTrigger value="about" className="data-[state=active]:bg-transparent data-[state=active]:shadow-none">About Me</TabsTrigger>
@@ -135,7 +135,7 @@ const ProfileSection = () => {
                 <div className="flex items-center gap-4 md:gap-6 w-full sm:w-auto justify-between sm:justify-end">
                   <Button 
                     variant="ghost" 
-                    className="gap-2 px-5 md:px-7 py-2.5 md:py-3.5 text-[11px] md:text-[13px] font-semibold bg-[#FFFFFF]/[0.02] hover:bg-[#FFFFFF]/[0.08] text-white rounded-[104px] shadow-[0_0_0_1.8px_rgba(255,255,255,0.1),0_4px_10px_rgba(0,0,0,0.5),inset_0_0_48px_rgba(255,255,255,0.05),3px_0_6px_rgba(255,255,255,0.15),0_-3px_6px_rgba(255,255,255,0.15)] h-auto uppercase tracking-wide"
+                    className="gap-2 px-5 md:px-7 py-2.5 md:py-3.5 text-[11px] md:text-[13px] font-semibold bg-[#FFFFFF]/[0.02] hover:bg-[#FFFFFF]/[0.08] text-white rounded-[104px] shadow-[0_0_0_1.8px_rgba(255,255,255,0.1),0_8px_20px_rgba(0,0,0,0.7),inset_0_0_48px_rgba(255,255,255,0.05),3px_0_6px_rgba(255,255,255,0.15),0_-3px_6px_rgba(255,255,255,0.15)] h-auto uppercase tracking-wide"
                   >
                     <Plus className="h-3 w-3 md:h-3.5 md:w-3.5" />
                     ADD IMAGE
@@ -148,7 +148,7 @@ const ProfileSection = () => {
                       className="h-9 w-9 md:h-11 md:w-11 rounded-full bg-gradient-to-b from-[#313539] to-[#1A1D1F] hover:from-[#3A3E43] hover:to-[#1E2022] shadow-[0_4px_10px_rgba(0,0,0,0.6),inset_0_2px_2px_rgba(255,255,255,0.05),3px_0_5px_rgba(255,255,255,0.12),0_-3px_5px_rgba(255,255,255,0.12)] text-[#6F787C]"
                       onClick={handlePrevImage}
                     >
-                      <ChevronLeft className="h-4 w-4 md:h-5 md:w-5" />
+                      <ArrowLeft className="h-7 w-7 md:h-8 md:w-8" strokeWidth={3.5} />
                     </Button>
                     <Button 
                       variant="ghost" 
@@ -156,7 +156,7 @@ const ProfileSection = () => {
                       className="h-9 w-9 md:h-11 md:w-11 rounded-full bg-gradient-to-b from-[#313539] to-[#1A1D1F] hover:from-[#3A3E43] hover:to-[#1E2022] shadow-[0_4px_10px_rgba(0,0,0,0.6),inset_0_2px_2px_rgba(255,255,255,0.05),3px_0_5px_rgba(255,255,255,0.12),0_-3px_5px_rgba(255,255,255,0.12)] text-[#6F787C]"
                       onClick={handleNextImage}
                     >
-                      <ChevronRight className="h-4 w-4 md:h-5 md:w-5" />
+                      <ArrowRight className="h-7 w-7 md:h-8 md:w-8" strokeWidth={3.5} />
                     </Button>
                   </div>
                 </div>
